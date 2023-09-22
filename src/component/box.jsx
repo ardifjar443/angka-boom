@@ -14,6 +14,14 @@ const Box = (props) => {
   const enter = () => {
     if (props.angka >= props.angkaPertama && props.angka <= props.angkaKedua) {
       setPeringatan(false);
+      props.setTebakan(props.angka);
+      if (props.angka == props.angkaRandom) {
+        props.game(true);
+      } else if (props.angka > props.angkaRandom) {
+        props.setAngkaKedua(props.angka);
+      } else {
+        props.setAngkaPertama(props.angka);
+      }
     } else {
       setPeringatan(true);
     }
@@ -27,7 +35,8 @@ const Box = (props) => {
       >
         <div>
           <h1 className=" text-2xl text-b  hover:text-violet-400">
-            Angka Boom
+            Angka Boom : random angka : {props.angkaRandom} : tebakan :{" "}
+            {props.tebakan}
           </h1>
         </div>
         <div className=" m-5">
