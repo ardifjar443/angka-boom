@@ -38,9 +38,8 @@ const Box = (props) => {
         style={{ backgroundColor: "#fffffe" }}
       >
         <div>
-          <h1 className=" text-2xl text-b  hover:text-violet-400">
-            Angka Boom : random angka : {props.angkaRandom} : tebakan :{" "}
-            {props.tebakan}
+          <h1 className=" text-3xl text-b  hover:text-violet-400">
+            Angka Boom
           </h1>
         </div>
         <div className=" m-5">
@@ -81,7 +80,12 @@ const Box = (props) => {
           <input
             className=" w-1/2 text-center text-3xl font-bold text-red-200 hover:text-red-300  border-2 border-violet-400 "
             type="text"
-            value={props.angka}
+            value={
+              props.angka == props.angkaPertama ||
+              props.angka == props.angkaKedua
+                ? ""
+                : props.angka
+            }
             onChange={handleChange}
             onKeyDown={handleKeyPress}
             tabIndex="0"
