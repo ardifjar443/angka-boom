@@ -12,7 +12,7 @@ const Box = (props) => {
     }
   };
   const enter = () => {
-    if (props.angka >= props.angkaPertama && props.angka <= props.angkaKedua) {
+    if (props.angka >= props.angkaPertama+1 && props.angka <= props.angkaKedua-1) {
       setPeringatan(false);
       props.setTebakan(props.angka);
       if (props.angka == props.angkaRandom) {
@@ -47,14 +47,14 @@ const Box = (props) => {
         </div>
         <div className=" text-center flex flex-col justify-center items-center  ">
           <div
-            className={` w-1/2 bg-violet-400 ${
+            className={` w-1/2 bg-violet-400 text-white p-2 rounded-t-lg  ${
               peringatan ? "block" : "hidden"
             }`}
           >
-            hello world
+            masukan angka antara {props.angkaPertama+1} sampai {props.angkaKedua-1}
           </div>
           <input
-            className="text-center text-3xl font-bold text-red-200 hover:text-red-300"
+            className=" w-1/2 text-center text-3xl font-bold text-red-200 hover:text-red-300  border-2 border-violet-400 "
             type="text"
             value={props.angka}
             onChange={handleChange}
