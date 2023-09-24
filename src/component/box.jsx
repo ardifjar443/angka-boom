@@ -12,7 +12,10 @@ const Box = (props) => {
     }
   };
   const enter = () => {
-    if (props.angka >= props.angkaPertama+1 && props.angka <= props.angkaKedua-1) {
+    if (
+      props.angka >= Number(props.angkaPertama) + 1 &&
+      props.angka <= Number(props.angkaKedua) - 1
+    ) {
       setPeringatan(false);
       props.setTebakan(props.angka);
       if (props.angka == props.angkaRandom) {
@@ -25,6 +28,7 @@ const Box = (props) => {
     } else {
       setPeringatan(true);
     }
+    props.setAngka("");
   };
 
   return (
@@ -47,11 +51,32 @@ const Box = (props) => {
         </div>
         <div className=" text-center flex flex-col justify-center items-center  ">
           <div
+            className={` w-1/3 bg-violet-500 text-white p-2 rounded-t-lg  ${
+              Number(props.angkaPertama) + 1 === props.angkaRandom &&
+              Number(props.angkaKedua) - 1 === props.angkaRandom
+                ? "block"
+                : "hidden"
+            }`}
+          >
+            Menyerahlah Sajah
+            <button
+              className="bg-white rounded-md text-black p-1 ms-3 hover:bg-slate-200"
+              onClick={() => {
+                props.newGame();
+                props.setAngkaPertama(1);
+                props.setAngkaKedua(100);
+              }}
+            >
+              New Game
+            </button>
+          </div>
+          <div
             className={` w-1/2 bg-violet-400 text-white p-2 rounded-t-lg  ${
               peringatan ? "block" : "hidden"
             }`}
           >
-            masukan angka antara {props.angkaPertama+1} sampai {props.angkaKedua-1}
+            masukan angka antara {Number(props.angkaPertama) + 1} sampai{" "}
+            {props.angkaKedua - 1}
           </div>
           <input
             className=" w-1/2 text-center text-3xl font-bold text-red-200 hover:text-red-300  border-2 border-violet-400 "
