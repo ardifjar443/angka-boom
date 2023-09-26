@@ -102,6 +102,16 @@ const Box = (props) => {
           </button>
         </div>
       </div>
+      <div className=" text-white mt-4">
+        code by
+        <a
+          href="https://github.com/ardifjar443"
+          className="ms-2"
+          target="_blank"
+        >
+          Ardifjar443
+        </a>
+      </div>
     </>
   );
 };
